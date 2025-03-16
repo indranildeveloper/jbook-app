@@ -34,7 +34,7 @@ const App: FC = () => {
       entryPoints: ["index.js"],
       bundle: true,
       write: false,
-      plugins: [unpkgPathPlugin()],
+      plugins: [unpkgPathPlugin(inputCode)],
       define: {
         "process.env.NODE_ENV": '"production"',
         global: "window",
@@ -49,7 +49,7 @@ const App: FC = () => {
       <textarea
         name="code"
         id="code"
-        className="textarea mb-4"
+        className="textarea mb-4 w-full h-64"
         placeholder="Enter your code"
         value={inputCode}
         onChange={(e) => setInputCode(e.target.value)}
