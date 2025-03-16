@@ -1,10 +1,12 @@
 import { FC, useState, useEffect, useRef } from "react";
 import * as esbuild from "esbuild-wasm";
+import { unpkgPathPlugin } from "./plugins/unpkgPathPlugin";
 
 const App: FC = () => {
   const [inputCode, setInputCode] = useState<string>("");
   const [code, setCode] = useState<string>("");
   const initializeEsbuildRef = useRef<boolean>(false);
+  const initializeAppRef = useRef<boolean>(false);
 
   const startService = async () => {
     await esbuild.initialize({
@@ -15,18 +17,31 @@ const App: FC = () => {
   };
 
   useEffect(() => {
-    startService();
+    /**
+     * * This extra ref is used to prevent the useEffect running twice in
+     * * React Strict Mode
+     */
+    if (!initializeAppRef.current) {
+      startService();
+      initializeAppRef.current = true;
+    }
   }, []);
 
   const handleClick = async () => {
     if (!initializeEsbuildRef.current) return;
-    const result = await esbuild.transform(inputCode, {
-      loader: "jsx",
-      target: "es2015",
+
+    const result = await esbuild.build({
+      entryPoints: ["index.js"],
+      bundle: true,
+      write: false,
+      plugins: [unpkgPathPlugin()],
+      define: {
+        "process.env.NODE_ENV": '"production"',
+        global: "window",
+      },
     });
 
-    console.log(result);
-    setCode(result.code);
+    setCode(result.outputFiles[0].text);
   };
 
   return (
@@ -45,7 +60,7 @@ const App: FC = () => {
         </button>
       </div>
 
-      <pre className="border h-64 w-64">{code}</pre>
+      <pre>{code}</pre>
     </div>
   );
 };
