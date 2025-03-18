@@ -5,13 +5,14 @@ import { fetchPlugin } from "./plugins/fetchPlugin";
 
 const App: FC = () => {
   const [inputCode, setInputCode] = useState<string>("");
-  const [code, setCode] = useState<string>("");
   const initializeEsbuildRef = useRef<boolean>(false);
   const initializeAppRef = useRef<boolean>(false);
+  const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
   const startService = async () => {
     await esbuild.initialize({
       worker: true,
+      // TODO: Make this a environment variable
       wasmURL: "https://unpkg.com/esbuild-wasm@0.25.1/esbuild.wasm",
     });
     initializeEsbuildRef.current = true;
@@ -31,6 +32,8 @@ const App: FC = () => {
   const handleClick = async () => {
     if (!initializeEsbuildRef.current) return;
 
+    iframeRef.current!.srcdoc = html;
+
     const result = await esbuild.build({
       entryPoints: ["index.js"],
       bundle: true,
@@ -42,15 +45,39 @@ const App: FC = () => {
       },
     });
 
-    setCode(result.outputFiles[0].text);
+    iframeRef.current?.contentWindow?.postMessage(
+      result.outputFiles[0].text,
+      "*"
+    );
   };
+
+  // TODO: Serve HTML from a different server endpoint
+  const html = `
+    <html>
+      <head></head>
+      <body>
+        <div id="root"></div>
+        <script>
+          window.addEventListener("message", (event) => {
+            try{
+              eval(event.data);
+            } catch (error) {
+              const root = document.querySelector("#root");
+              root.innerHTML = '<div style="color: red;"><h4>Runtime Error:</h4>' + error + '</div>';
+              console.error(error);
+            }
+          }, false);
+        </script>
+      </body>
+    </html>
+  `;
 
   return (
     <div className="p-5 m-5">
       <textarea
         name="code"
         id="code"
-        className="textarea mb-4 w-full h-64"
+        className="textarea textarea-primary textarea-xl font-mono mb-4 w-full h-64"
         placeholder="Enter your code"
         value={inputCode}
         onChange={(e) => setInputCode(e.target.value)}
@@ -60,8 +87,13 @@ const App: FC = () => {
           Submit
         </button>
       </div>
-
-      <pre>{code}</pre>
+      <iframe
+        title="preview"
+        ref={iframeRef}
+        srcDoc={html}
+        sandbox="allow-scripts"
+        className="border w-full"
+      />
     </div>
   );
 };
