@@ -2,6 +2,7 @@ import { FC, useState, useEffect, useRef } from "react";
 import * as esbuild from "esbuild-wasm";
 import { unpkgPathPlugin } from "./plugins/unpkgPathPlugin";
 import { fetchPlugin } from "./plugins/fetchPlugin";
+import CodeEditor from "./components/CodeEditor";
 
 const App: FC = () => {
   const [inputCode, setInputCode] = useState<string>("");
@@ -74,14 +75,18 @@ const App: FC = () => {
 
   return (
     <div className="p-5 m-5">
-      <textarea
+      <CodeEditor
+        initialValue={inputCode}
+        onChange={(value) => setInputCode(value)}
+      />
+      {/* <textarea
         name="code"
         id="code"
         className="textarea textarea-primary textarea-xl font-mono mb-4 w-full h-64"
         placeholder="Enter your code"
         value={inputCode}
         onChange={(e) => setInputCode(e.target.value)}
-      ></textarea>
+      ></textarea> */}
       <div className="mb-4">
         <button onClick={handleClick} className="btn btn-primary">
           Submit
