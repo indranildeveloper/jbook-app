@@ -74,9 +74,9 @@ const App: FC = () => {
   `;
 
   return (
-    <div className="p-5 m-5">
+    <div>
       <CodeEditor
-        initialValue={inputCode}
+        initialValue="const a = 1;"
         onChange={(value) => setInputCode(value)}
       />
       {/* <textarea
