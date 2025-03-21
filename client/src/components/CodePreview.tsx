@@ -10,7 +10,7 @@ const CodePreview: FC<CodePreviewProps> = ({ code }) => {
     iframeRef.current!.srcdoc = htmlTemplate;
     setTimeout(() => {
       iframeRef.current?.contentWindow?.postMessage(code, "*");
-    }, 500);
+    }, 100);
   }, [code]);
 
   return (

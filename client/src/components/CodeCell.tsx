@@ -1,5 +1,4 @@
-import { FC, useState } from "react";
-
+import { FC, useState, useEffect } from "react";
 import CodeEditor from "./CodeEditor";
 import CodePreview from "./CodePreview";
 import ResizableContainer from "./ResizableContainer";
@@ -9,10 +8,16 @@ const CodeCell: FC = () => {
   const [inputCode, setInputCode] = useState<string>("");
   const [code, setCode] = useState<string>("");
 
-  const handleClick = async () => {
-    const outputCode = await bundleCode(inputCode);
-    setCode(outputCode);
-  };
+  useEffect(() => {
+    const timer: number = setTimeout(async () => {
+      const outputCode = await bundleCode(inputCode);
+      setCode(outputCode);
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [inputCode]);
 
   return (
     <ResizableContainer direction="vertical">
