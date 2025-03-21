@@ -9,7 +9,7 @@ export const htmlTemplate = /*html*/ `
         <script>
           const handleError = (error) => {
             const root = document.querySelector("#root");
-                root.innerHTML = '<div style="color: red;"><h4>Runtime Error:</h4>' + error + '</div>';
+                root.innerHTML = '<div style="color: red; font-family: ui-sans-serif, system-ui, sans-serif;"><h4 style="margin-bottom: 6px;">Runtime Error:</h4>' + error + '</div>';
                 console.error(error);
           };
 

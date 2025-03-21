@@ -7,11 +7,13 @@ import bundleCode from "../bundler";
 const CodeCell: FC = () => {
   const [inputCode, setInputCode] = useState<string>("");
   const [code, setCode] = useState<string>("");
+  const [bundleCodeError, setBundleCodeError] = useState<string>("");
 
   useEffect(() => {
     const timer: number = setTimeout(async () => {
       const outputCode = await bundleCode(inputCode);
-      setCode(outputCode);
+      setCode(outputCode.code);
+      setBundleCodeError(outputCode.error);
     }, 1000);
 
     return () => {
@@ -28,7 +30,7 @@ const CodeCell: FC = () => {
             onChange={(value) => setInputCode(value)}
           />
         </ResizableContainer>
-        <CodePreview code={code} />
+        <CodePreview code={code} bundleCodeError={bundleCodeError} />
       </div>
     </ResizableContainer>
   );
