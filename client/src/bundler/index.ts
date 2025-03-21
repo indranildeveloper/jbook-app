@@ -1,5 +1,5 @@
 import * as esbuild from "esbuild-wasm";
-import { fetchPlugin, unpkgPathPlugin } from "../plugins";
+import { fetchPlugin, unpkgPathPlugin } from "./plugins";
 
 let isInitialized: boolean = false;
 

@@ -54,7 +54,7 @@ const CodeEditor: FC<CodeEditorProps> = ({ initialValue, onChange }) => {
   };
 
   return (
-    <div className="relative h-full group">
+    <div className="relative h-full group w-[calc(100%-1rem)]">
       <button
         className="btn btn-sm btn-primary absolute top-2.5 right-2.5 z-20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         onClick={handleFormatCode}
@@ -62,7 +62,7 @@ const CodeEditor: FC<CodeEditorProps> = ({ initialValue, onChange }) => {
         Format
       </button>
       <MonacoEditor
-        height="500px"
+        height="100%"
         defaultLanguage="javascript"
         language="javascript"
         theme="vs-dark"
