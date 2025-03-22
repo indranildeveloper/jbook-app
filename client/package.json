@@ -15,6 +15,7 @@
     "@monaco-editor/react": "^4.7.0",
     "@tailwindcss/vite": "^4.0.15",
     "@types/prettier": "^3.0.0",
+    "@uiw/react-md-editor": "^4.0.5",
     "axios": "^1.8.4",
     "clsx": "^2.1.1",
     "esbuild-wasm": "^0.25.1",
@@ -26,6 +27,7 @@
     "react-dom": "^19.0.0",
     "react-icons": "^5.5.0",
     "react-resizable": "^3.0.5",
+    "rehype-sanitize": "^6.0.0",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^4.0.15"
   },

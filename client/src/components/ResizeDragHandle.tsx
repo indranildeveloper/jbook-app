@@ -1,6 +1,6 @@
 import { forwardRef } from "react";
 import { ResizeHandle } from "react-resizable";
-import { MdDragIndicator } from "react-icons/md";
+import { MdDragHandle } from "react-icons/md";
 import { cn } from "../utils/utils";
 
 const ResizeDragHandle = forwardRef<
@@ -24,9 +24,7 @@ const ResizeDragHandle = forwardRef<
           handleAxis === "e" && "flex flex-col h-full"
         )}
       >
-        <MdDragIndicator className={cn(handleAxis === "s" && "rotate-90")} />
-        <MdDragIndicator className={cn(handleAxis === "s" && "rotate-90")} />
-        <MdDragIndicator className={cn(handleAxis === "s" && "rotate-90")} />
+        <MdDragHandle className={cn(handleAxis === "e" && "rotate-90")} />
       </div>
     </div>
   );
