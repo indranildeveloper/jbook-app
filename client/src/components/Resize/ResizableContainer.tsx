@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { ResizableBox, type ResizableBoxProps } from "react-resizable";
 import ResizeDragHandle from "./ResizeDragHandle";
-import { ResizableContainerProps } from "../interfaces";
+import { ResizableContainerProps } from "../../interfaces";
 
 const ResizableContainer: FC<ResizableContainerProps> = ({
   direction,

@@ -7,7 +7,7 @@ import esTree from "prettier/plugins/estree";
 import { parse } from "@babel/parser";
 import traverse from "@babel/traverse";
 import MonacoJSXHighlighter from "monaco-jsx-highlighter";
-import { CodeEditorProps } from "../interfaces";
+import { CodeEditorProps } from "../../interfaces";
 
 const CodeEditor: FC<CodeEditorProps> = ({ initialValue, onChange }) => {
   const editorRef = useRef<editor.editor.IStandaloneCodeEditor>(null);

@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { ResizeHandle } from "react-resizable";
 import { MdDragHandle } from "react-icons/md";
-import { cn } from "../utils/utils";
+import { cn } from "../../utils/utils";
 
 const ResizeDragHandle = forwardRef<
   HTMLDivElement,

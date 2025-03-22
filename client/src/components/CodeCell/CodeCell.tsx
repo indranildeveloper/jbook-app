@@ -1,8 +1,8 @@
 import { FC, useState, useEffect } from "react";
 import CodeEditor from "./CodeEditor";
 import CodePreview from "./CodePreview";
-import ResizableContainer from "./ResizableContainer";
-import bundleCode from "../bundler";
+import ResizableContainer from "../Resize/ResizableContainer";
+import bundleCode from "../../bundler";
 
 const CodeCell: FC = () => {
   const [inputCode, setInputCode] = useState<string>("");
@@ -27,7 +27,7 @@ const CodeCell: FC = () => {
         <ResizableContainer direction="horizontal">
           <CodeEditor
             initialValue="const a = 1;"
-            onChange={(value) => setInputCode(value)}
+            onChange={(value: string) => setInputCode(value)}
           />
         </ResizableContainer>
         <CodePreview code={code} bundleCodeError={bundleCodeError} />

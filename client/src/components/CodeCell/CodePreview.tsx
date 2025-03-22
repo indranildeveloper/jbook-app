@@ -1,7 +1,7 @@
 import { FC, useEffect, useRef } from "react";
-import { CodePreviewProps } from "../interfaces";
-import { htmlTemplate } from "../constants/htmlTemplate";
-import { cn } from "../utils/utils";
+import { htmlTemplate } from "../../constants/htmlTemplate";
+import { cn } from "../../utils/utils";
+import { CodePreviewProps } from "../../interfaces";
 
 const CodePreview: FC<CodePreviewProps> = ({ code, bundleCodeError }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
