@@ -1,15 +1,6 @@
-import { ICell } from "../../interfaces";
 import { ActionType } from "../../interfaces/actionTypes";
+import { CellsState } from "../../interfaces/CellsState";
 import { Action } from "../actions";
-
-interface CellsState {
-  loading: boolean;
-  error: string | null;
-  order: string[];
-  data: {
-    [key: string]: ICell;
-  };
-}
 
 const initialCellState: CellsState = {
   loading: false,
@@ -22,7 +13,18 @@ const reducer = (
   state: CellsState = initialCellState,
   action: Action
 ): CellsState => {
-  return state;
+  switch (action.type) {
+    case ActionType.UPDATE_CELL:
+      return state;
+    case ActionType.DELETE_CELL:
+      return state;
+    case ActionType.MOVE_CELL:
+      return state;
+    case ActionType.INSERT_CELL_BEFORE:
+      return state;
+    default:
+      return state;
+  }
 };
 
 export default reducer;

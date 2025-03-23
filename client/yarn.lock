@@ -1846,6 +1846,7 @@ __metadata:
     react-redux: "npm:^9.2.0"
     react-resizable: "npm:^3.0.5"
     redux: "npm:^5.0.1"
+    redux-devtools-extension: "npm:^2.13.9"
     redux-thunk: "npm:^3.1.0"
     rehype-sanitize: "npm:^6.0.0"
     tailwind-merge: "npm:^3.0.2"
@@ -5178,6 +5179,15 @@ __metadata:
     string_decoder: "npm:^1.1.1"
     util-deprecate: "npm:^1.0.1"
   checksum: 10c0/e37be5c79c376fdd088a45fa31ea2e423e5d48854be7a22a58869b4e84d25047b193f6acb54f1012331e1bcd667ffb569c01b99d36b0bd59658fb33f513511b7
+  languageName: node
+  linkType: hard
+
+"redux-devtools-extension@npm:^2.13.9":
+  version: 2.13.9
+  resolution: "redux-devtools-extension@npm:2.13.9"
+  peerDependencies:
+    redux: ^3.1.0 || ^4.0.0
+  checksum: 10c0/753611d40c5d8fd00af985a07122ab922ad8ec48ae617b6ed58594af08c8efaf54024a76da8f5293f9394002da977604da10e828d13f0e419c95d9edccf5c50a
   languageName: node
   linkType: hard
 
