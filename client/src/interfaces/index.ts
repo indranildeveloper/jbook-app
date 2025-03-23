@@ -6,3 +6,12 @@ export {
   type ICell,
   type TCellMoveDirection,
 } from "./CellInterface";
+export { type CellsState } from "./CellsState";
+export { ActionType } from "./ActionTypes";
+export {
+  type Action,
+  type UpdateCellAction,
+  type MoveCellAction,
+  type InsertCellBeforeAction,
+  type DeleteCellAction,
+} from "./ActionInterface";

@@ -1,9 +1,6 @@
 import { produce } from "immer";
 import { v4 as uuidv4 } from "uuid";
-import { ActionType } from "../../interfaces/ActionTypes";
-import { CellsState } from "../../interfaces/CellsState";
-import { Action } from "../actions";
-import { ICell } from "../../interfaces";
+import { Action, ActionType, CellsState, ICell } from "../../interfaces";
 
 const initialCellState: CellsState = {
   loading: false,

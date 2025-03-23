@@ -1,11 +1,11 @@
-import { TCell, TCellMoveDirection } from "../../interfaces";
-import { ActionType } from "../../interfaces/ActionTypes";
+import { ActionType, TCell, TCellMoveDirection } from "../../interfaces";
+
 import {
   UpdateCellAction,
   DeleteCellAction,
   MoveCellAction,
   InsertCellBeforeAction,
-} from "../actions";
+} from "../../interfaces/ActionInterface";
 
 export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {

@@ -1,5 +1,5 @@
-import { ActionType } from "../../interfaces/ActionTypes";
-import { TCell, TCellMoveDirection } from "../../interfaces";
+import { ActionType } from "./ActionTypes";
+import { TCell, TCellMoveDirection } from "./CellInterface";
 
 export interface MoveCellAction {
   type: ActionType.MOVE_CELL;
