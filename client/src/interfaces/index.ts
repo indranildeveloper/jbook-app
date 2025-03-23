@@ -15,3 +15,4 @@ export {
   type InsertCellBeforeAction,
   type DeleteCellAction,
 } from "./ActionInterface";
+export { type CellListItemProps } from "./CellListItemProps";
