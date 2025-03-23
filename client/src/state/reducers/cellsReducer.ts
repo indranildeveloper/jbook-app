@@ -1,4 +1,4 @@
-import { ActionType } from "../../interfaces/actionTypes";
+import { ActionType } from "../../interfaces/ActionTypes";
 import { CellsState } from "../../interfaces/CellsState";
 import { Action } from "../actions";
 

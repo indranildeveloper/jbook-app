@@ -1,30 +1,28 @@
-import { ActionType } from "../../interfaces/actionTypes";
-import { CellTypes } from "../../interfaces";
+import { ActionType } from "../../interfaces/ActionTypes";
+import { TCell, TCellMoveDirection } from "../../interfaces";
 
-interface MoveCellAction {
+export interface MoveCellAction {
   type: ActionType.MOVE_CELL;
   payload: {
     id: string;
-    direction: "up" | "down";
+    direction: TCellMoveDirection;
   };
 }
 
-interface DeleteCellAction {
+export interface DeleteCellAction {
   type: ActionType.DELETE_CELL;
-  payload: {
-    id: string;
-  };
+  payload: string;
 }
 
-interface InsertCellBeforeAction {
+export interface InsertCellBeforeAction {
   type: ActionType.INSERT_CELL_BEFORE;
   payload: {
     id: string;
-    type: CellTypes;
+    type: TCell;
   };
 }
 
-interface UpdateCellAction {
+export interface UpdateCellAction {
   type: ActionType.UPDATE_CELL;
   payload: {
     id: string;

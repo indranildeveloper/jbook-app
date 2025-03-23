@@ -1,7 +1,9 @@
-export type CellTypes = "code" | "text";
+export type TCell = "code" | "text";
+
+export type TCellMoveDirection = "up" | "down";
 
 export interface ICell {
   id: string;
-  type: CellTypes;
+  type: TCell;
   content: string;
 }
