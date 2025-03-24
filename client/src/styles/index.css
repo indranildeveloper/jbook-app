@@ -19,6 +19,6 @@
   @apply h-4 cursor-row-resize bg-primary w-full bottom-0 rounded-none bg-[url('/drag_handle.svg')] bg-center bg-no-repeat;
 }
 
-.text-editor .wmde-markdown-color {
+.text-editor .wmde-markdown.wmde-markdown-color {
   @apply px-4 py-6;
 }

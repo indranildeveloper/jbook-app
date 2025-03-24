@@ -1,11 +1,14 @@
 import { FC, useEffect, useRef, useState } from "react";
 import MDEditor from "@uiw/react-md-editor";
 import rehypeSanitize from "rehype-sanitize";
+import { useActions } from "../../hooks";
+import { TextEditorProps } from "../../interfaces";
 
-const TextEditor: FC = () => {
-  const [value, setValue] = useState<string>("# Header");
+const TextEditor: FC<TextEditorProps> = ({ cell }) => {
   const [isTextEditing, setIsTextEditing] = useState<boolean>(false);
   const editorRef = useRef<HTMLDivElement>(null);
+
+  const { updateCell } = useActions();
 
   useEffect(() => {
     const editingTextListener = (event: MouseEvent) => {
@@ -34,8 +37,10 @@ const TextEditor: FC = () => {
       {isTextEditing ? (
         <div className="text-editor" ref={editorRef}>
           <MDEditor
-            value={value}
-            onChange={(value: string | undefined) => setValue(value ?? "")}
+            value={cell.content}
+            onChange={(value: string | undefined) =>
+              updateCell(cell.id, value ?? "")
+            }
             previewOptions={{
               rehypePlugins: [[rehypeSanitize]],
             }}
@@ -46,7 +51,7 @@ const TextEditor: FC = () => {
           className="border border-slate-800 text-editor"
           onClick={() => setIsTextEditing(true)}
         >
-          <MDEditor.Markdown source={value} />
+          <MDEditor.Markdown source={cell.content || "Click to edit"} />
         </div>
       )}
     </div>
