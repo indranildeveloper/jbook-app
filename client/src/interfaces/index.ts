@@ -18,3 +18,4 @@ export {
 export { type CellListItemProps } from "./CellListItemProps";
 export { type CodeCellProps } from "./CodeCellProps";
 export { type TextEditorProps } from "./TextEditorProps";
+export { type ActionBarProps } from "./ActionBarProps";
