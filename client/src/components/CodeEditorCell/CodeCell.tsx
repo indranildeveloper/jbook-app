@@ -1,17 +1,20 @@
 import { FC, useState, useEffect } from "react";
+import { useActions } from "../../hooks";
 import CodeEditor from "./CodeEditor";
 import CodePreview from "./CodePreview";
 import ResizableContainer from "../Resize/ResizableContainer";
 import bundleCode from "../../bundler";
+import { CodeCellProps } from "../../interfaces";
 
-const CodeCell: FC = () => {
-  const [inputCode, setInputCode] = useState<string>("");
+const CodeCell: FC<CodeCellProps> = ({ cell }) => {
   const [code, setCode] = useState<string>("");
   const [bundleCodeError, setBundleCodeError] = useState<string>("");
 
+  const { updateCell } = useActions();
+
   useEffect(() => {
     const timer: number = setTimeout(async () => {
-      const outputCode = await bundleCode(inputCode);
+      const outputCode = await bundleCode(cell.content);
       setCode(outputCode.code);
       setBundleCodeError(outputCode.error);
     }, 1000);
@@ -19,15 +22,15 @@ const CodeCell: FC = () => {
     return () => {
       clearTimeout(timer);
     };
-  }, [inputCode]);
+  }, [cell.content]);
 
   return (
     <ResizableContainer direction="vertical">
       <div className="flex h-full flex-row">
         <ResizableContainer direction="horizontal">
           <CodeEditor
-            initialValue="const a = 1;"
-            onChange={(value: string) => setInputCode(value)}
+            initialValue={cell.content}
+            onChange={(value: string) => updateCell(cell.id, value)}
           />
         </ResizableContainer>
         <CodePreview code={code} bundleCodeError={bundleCodeError} />

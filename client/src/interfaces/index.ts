@@ -16,3 +16,4 @@ export {
   type DeleteCellAction,
 } from "./ActionInterface";
 export { type CellListItemProps } from "./CellListItemProps";
+export { type CodeCellProps } from "./CodeCellProps";
