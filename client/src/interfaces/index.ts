@@ -12,10 +12,11 @@ export {
   type Action,
   type UpdateCellAction,
   type MoveCellAction,
-  type InsertCellBeforeAction,
+  type InsertCellAfterAction,
   type DeleteCellAction,
 } from "./ActionInterface";
 export { type CellListItemProps } from "./CellListItemProps";
 export { type CodeCellProps } from "./CodeCellProps";
 export { type TextEditorProps } from "./TextEditorProps";
 export { type ActionBarProps } from "./ActionBarProps";
+export { type AddCellProps } from "./AddCellProps";

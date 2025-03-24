@@ -26,7 +26,7 @@ const CodeCell: FC<CodeCellProps> = ({ cell }) => {
 
   return (
     <ResizableContainer direction="vertical">
-      <div className="flex h-full flex-row">
+      <div className="flex h-[calc(100%-16px)] flex-row">
         <ResizableContainer direction="horizontal">
           <CodeEditor
             initialValue={cell.content}
