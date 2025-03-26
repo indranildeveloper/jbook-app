@@ -1,10 +1,10 @@
 import { produce } from "immer";
-import { ActionType, Action, BundleState } from "../../interfaces";
+import { ActionType, Action, BundlesState } from "../../interfaces";
 
-const initialBundleState: BundleState = {};
+const initialBundleState: BundlesState = {};
 
 const bundlesReducer = produce(
-  (state: BundleState = initialBundleState, action: Action): BundleState => {
+  (state: BundlesState = initialBundleState, action: Action): BundlesState => {
     switch (action.type) {
       case ActionType.BUNDLE_START:
         state[action.payload.cellId] = {
