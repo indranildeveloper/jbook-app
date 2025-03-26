@@ -14,6 +14,8 @@ export {
   type MoveCellAction,
   type InsertCellAfterAction,
   type DeleteCellAction,
+  type BundleStartAction,
+  type BundleCompleteAction,
 } from "./ActionInterface";
 export { type CellListItemProps } from "./CellListItemProps";
 export { type CodeCellProps } from "./CodeCellProps";

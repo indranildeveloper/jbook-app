@@ -1,11 +1,17 @@
-import { ActionType, TCell, TCellMoveDirection } from "../../interfaces";
-
+import { Dispatch } from "redux";
+import {
+  Action,
+  ActionType,
+  TCell,
+  TCellMoveDirection,
+} from "../../interfaces";
 import {
   UpdateCellAction,
   DeleteCellAction,
   MoveCellAction,
   InsertCellAfterAction,
-} from "../../interfaces/ActionInterface";
+} from "../../interfaces";
+import bundleCode from "../../bundler";
 
 export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {
@@ -47,5 +53,29 @@ export const insertCellAfter = (
       id,
       type: cellType,
     },
+  };
+};
+
+export const createBundleCode = (
+  cellId: string,
+  inputCode: string
+): ((dispatch: Dispatch<Action>) => Promise<void>) => {
+  return async (dispatch: Dispatch<Action>): Promise<void> => {
+    dispatch({
+      type: ActionType.BUNDLE_START,
+      payload: {
+        cellId,
+      },
+    });
+
+    const result = await bundleCode(inputCode);
+
+    dispatch({
+      type: ActionType.BUNDLE_COMPLETE,
+      payload: {
+        cellId,
+        bundle: result,
+      },
+    });
   };
 };
