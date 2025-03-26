@@ -38,7 +38,7 @@ export interface BundleStartAction {
 }
 
 export interface BundleCompleteAction {
-  type: ActionType.bUNDLE_COMPLETE;
+  type: ActionType.BUNDLE_COMPLETE;
   payload: {
     cellId: string;
     bundle: {

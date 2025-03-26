@@ -9,7 +9,7 @@ const initialCellState: CellsState = {
   data: {},
 };
 
-const reducer = produce(
+const cellsReducer = produce(
   (state: CellsState = initialCellState, action: Action): CellsState => {
     switch (action.type) {
       case ActionType.UPDATE_CELL: {
@@ -63,4 +63,4 @@ const reducer = produce(
   initialCellState
 );
 
-export default reducer;
+export default cellsReducer;

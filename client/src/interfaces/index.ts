@@ -20,3 +20,4 @@ export { type CodeCellProps } from "./CodeCellProps";
 export { type TextEditorProps } from "./TextEditorProps";
 export { type ActionBarProps } from "./ActionBarProps";
 export { type AddCellProps } from "./AddCellProps";
+export { type BundleState } from "./BundleState.ts";
