@@ -22,3 +22,19 @@
 .text-editor .wmde-markdown.wmde-markdown-color {
   @apply px-4 py-6;
 }
+
+@theme {
+  --animate-fadeIn: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

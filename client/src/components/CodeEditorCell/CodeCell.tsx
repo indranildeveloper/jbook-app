@@ -11,10 +11,20 @@ const CodeCell: FC<CodeCellProps> = ({ cell }) => {
   const bundledCode = useTypedSelector((state) => state.bundles[cell.id]);
 
   useEffect(() => {
+    /**
+     * TODO,
+     * After adding this if (!bundledCode) there is an error when we
+     * create multiple code cells which needs to be fixed!
+     */
+    // if (!bundledCode) {
+    //   createBundleCode(cell.id, cell.content);
+    //   return;
+    // }
+
     const timer: number = setTimeout(async () => {
       createBundleCode(cell.id, cell.content);
     }, 750);
-    console.log("rendered");
+
     return () => {
       clearTimeout(timer);
     };
@@ -29,12 +39,19 @@ const CodeCell: FC<CodeCellProps> = ({ cell }) => {
             onChange={(value: string) => updateCell(cell.id, value)}
           />
         </ResizableContainer>
-        {bundledCode && (
-          <CodePreview
-            code={bundledCode.code}
-            bundleCodeError={bundledCode.error}
-          />
-        )}
+
+        <div className="bg-white h-full grow">
+          {!bundledCode || bundledCode.loading ? (
+            <div className="h-full w-full flex items-center justify-center animate-fadeIn">
+              <span className="loading loading-spinner text-primary loading-xl"></span>
+            </div>
+          ) : (
+            <CodePreview
+              code={bundledCode.code}
+              bundleCodeError={bundledCode.error}
+            />
+          )}
+        </div>
       </div>
     </ResizableContainer>
   );

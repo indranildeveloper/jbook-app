@@ -11,7 +11,7 @@ const App: FC = () => {
 
   return (
     <Provider store={store}>
-      <div>
+      <div className="container mx-auto">
         <CellList />
       </div>
     </Provider>
