@@ -41,7 +41,7 @@ const CodeCell: FC<CodeCellProps> = ({ cell }) => {
           />
         </ResizableContainer>
 
-        <div className="bg-white h-full grow flex flex-col items-center justify-center w-[20%]">
+        <div className="bg-white h-full flex flex-col items-center justify-center grow w-[20%]">
           {!bundledCode || bundledCode.loading ? (
             <div className="h-full w-full flex items-center justify-center">
               <span className="loading loading-spinner text-primary loading-xl"></span>

@@ -17,7 +17,7 @@ const CodePreview: FC<CodePreviewProps> = ({ code, bundleCodeError }) => {
     <div
       className={cn(
         // TODO: only use tailwindcss
-        "h-full relative code-preview-wrapper"
+        "h-full relative w-full code-preview-wrapper"
       )}
     >
       <iframe
@@ -25,7 +25,7 @@ const CodePreview: FC<CodePreviewProps> = ({ code, bundleCodeError }) => {
         ref={iframeRef}
         srcDoc={htmlTemplate}
         sandbox="allow-scripts"
-        className="border w-full h-full transition-none animate-none"
+        className="border w-full h-full"
       />
       {bundleCodeError && (
         <div className="absolute top-2.5 left-2.5 text-red-600">
