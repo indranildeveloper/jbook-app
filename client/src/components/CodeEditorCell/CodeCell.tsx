@@ -1,5 +1,5 @@
 import { FC, useEffect } from "react";
-import { useActions, useTypedSelector } from "../../hooks";
+import { useActions, useCumulativeCode, useTypedSelector } from "../../hooks";
 import CodeEditor from "./CodeEditor";
 import CodePreview from "./CodePreview";
 import ResizableContainer from "../Resize/ResizableContainer";
@@ -9,6 +9,7 @@ const CodeCell: FC<CodeCellProps> = ({ cell }) => {
   const { updateCell, createBundleCode } = useActions();
 
   const bundledCode = useTypedSelector((state) => state.bundles[cell.id]);
+  const cumulativeCode = useCumulativeCode(cell.id);
 
   useEffect(() => {
     /**
@@ -22,13 +23,13 @@ const CodeCell: FC<CodeCellProps> = ({ cell }) => {
     // }
 
     const timer: number = setTimeout(async () => {
-      createBundleCode(cell.id, cell.content);
+      createBundleCode(cell.id, cumulativeCode);
     }, 750);
 
     return () => {
       clearTimeout(timer);
     };
-  }, [cell.content, cell.id, createBundleCode]);
+  }, [cell.id, createBundleCode, cumulativeCode]);
 
   return (
     <ResizableContainer direction="vertical">

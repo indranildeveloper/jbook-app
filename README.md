@@ -3,7 +3,7 @@
 ```jsx
 import React from "react";
 import ReactDOM from "react-dom";
-import "bulma/css/bulma.css";
+
 
 const App = () => {
   return (
@@ -14,6 +14,8 @@ const App = () => {
   );
 };
 
+show(<App />);
+
 const App = () => {
   return (
     <div>
@@ -21,6 +23,7 @@ const App = () => {
     </div>
   );
 };
+
 
 console.log(React);
 console.log(ReactDOM);
