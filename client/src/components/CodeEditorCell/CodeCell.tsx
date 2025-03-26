@@ -33,7 +33,7 @@ const CodeCell: FC<CodeCellProps> = ({ cell }) => {
 
   return (
     <ResizableContainer direction="vertical">
-      <div className="flex h-[calc(100%-16px)] flex-row">
+      <div className="h-[calc(100%-16px)] flex flex-row">
         <ResizableContainer direction="horizontal">
           <CodeEditor
             initialValue={cell.content}
@@ -41,9 +41,9 @@ const CodeCell: FC<CodeCellProps> = ({ cell }) => {
           />
         </ResizableContainer>
 
-        <div className="bg-white h-full grow">
+        <div className="bg-white h-full grow flex flex-col items-center justify-center w-[20%]">
           {!bundledCode || bundledCode.loading ? (
-            <div className="h-full w-full flex items-center justify-center animate-fadeIn">
+            <div className="h-full w-full flex items-center justify-center">
               <span className="loading loading-spinner text-primary loading-xl"></span>
             </div>
           ) : (

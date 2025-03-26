@@ -4,7 +4,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-
 const App = () => {
   return (
     <div>
@@ -23,7 +22,6 @@ const App = () => {
     </div>
   );
 };
-
 
 console.log(React);
 console.log(ReactDOM);

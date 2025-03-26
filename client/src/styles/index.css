@@ -3,9 +3,29 @@
   themes: dark --default;
 }
 
+@theme {
+  --animate-fadeIn: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 .react-draggable-transparent-selection .code-preview-wrapper {
   @apply after:content-[''] after:absolute after:top-0 after:right-0 after:bottom-0 after:left-0 after:opacity-0;
 }
+
+/* .react-draggable-transparent-selection .cell-list {
+  @apply mb-96;
+} */
 
 .text-editor .w-md-editor {
   @apply p-0 rounded-none shadow-none;
@@ -21,20 +41,4 @@
 
 .text-editor .wmde-markdown.wmde-markdown-color {
   @apply px-4 py-6;
-}
-
-@theme {
-  --animate-fadeIn: fadeIn 0.5s;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
 }
