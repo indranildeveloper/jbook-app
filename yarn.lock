@@ -2809,6 +2809,7 @@ __metadata:
   dependencies:
     commander: "npm:^13.1.0"
     local-api: "workspace:^"
+    typescript: "npm:^5.8.2"
   languageName: unknown
   linkType: soft
 
@@ -5934,6 +5935,8 @@ __metadata:
 "local-api@workspace:^, local-api@workspace:packages/local-api":
   version: 0.0.0-use.local
   resolution: "local-api@workspace:packages/local-api"
+  dependencies:
+    typescript: "npm:^5.8.2"
   languageName: unknown
   linkType: soft
 

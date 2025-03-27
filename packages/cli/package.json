@@ -1,9 +1,16 @@
 {
   "name": "cli",
-  "main": "index.js",
-  "packageManager": "yarn@4.7.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "tsc --watch --preserveWatchOutput"
+  },
   "dependencies": {
     "commander": "^13.1.0",
     "local-api": "workspace:^"
-  }
+  },
+  "devDependencies": {
+    "typescript": "^5.8.2"
+  },
+  "packageManager": "yarn@4.7.0"
 }
