@@ -1,0 +1,9 @@
+{
+  "name": "cli",
+  "main": "index.js",
+  "packageManager": "yarn@4.7.0",
+  "dependencies": {
+    "commander": "^13.1.0",
+    "local-api": "workspace:^"
+  }
+}
