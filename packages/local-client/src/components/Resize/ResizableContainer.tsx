@@ -16,7 +16,7 @@ const ResizableContainer: FC<ResizableContainerProps> = ({
   let resizableProps: ResizableBoxProps;
 
   useEffect(() => {
-    let timer: number | undefined;
+    let timer: NodeJS.Timeout;
 
     const resizeListener = () => {
       if (timer) {

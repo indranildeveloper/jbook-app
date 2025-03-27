@@ -13,7 +13,7 @@ const CodeCell: FC<CodeCellProps> = ({ cell }) => {
 
   useEffect(() => {
     /**
-     * TODO,
+     * TODO
      * After adding this if (!bundledCode) there is an error when we
      * create multiple code cells which needs to be fixed!
      */
@@ -22,7 +22,7 @@ const CodeCell: FC<CodeCellProps> = ({ cell }) => {
     //   return;
     // }
 
-    const timer: number = setTimeout(async () => {
+    const timer: NodeJS.Timeout = setTimeout(async () => {
       createBundleCode(cell.id, cumulativeCode);
     }, 750);
 
