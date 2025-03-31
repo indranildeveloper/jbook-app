@@ -1,5 +1,5 @@
 import { ActionType } from "./ActionTypes";
-import { TCell, TCellMoveDirection } from "./CellInterface";
+import { ICell, TCell, TCellMoveDirection } from "./CellInterface";
 
 export interface MoveCellAction {
   type: ActionType.MOVE_CELL;
@@ -48,10 +48,27 @@ export interface BundleCompleteAction {
   };
 }
 
+export interface FetchCellsActions {
+  type: ActionType.FETCH_CELLS;
+}
+
+export interface FetchCellsCompleteAction {
+  type: ActionType.FETCH_CELLS_COMPLETE;
+  payload: ICell[];
+}
+
+export interface FetchCellsErrorAction {
+  type: ActionType.FETCH_CELLS_ERROR;
+  payload: string;
+}
+
 export type Action =
   | MoveCellAction
   | DeleteCellAction
   | InsertCellAfterAction
   | UpdateCellAction
   | BundleStartAction
-  | BundleCompleteAction;
+  | BundleCompleteAction
+  | FetchCellsActions
+  | FetchCellsCompleteAction
+  | FetchCellsErrorAction;

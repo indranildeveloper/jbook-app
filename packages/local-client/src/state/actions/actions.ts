@@ -32,7 +32,7 @@ export const deleteCell = (id: string): DeleteCellAction => {
 
 export const moveCell = (
   id: string,
-  direction: TCellMoveDirection
+  direction: TCellMoveDirection,
 ): MoveCellAction => {
   return {
     type: ActionType.MOVE_CELL,
@@ -45,7 +45,7 @@ export const moveCell = (
 
 export const insertCellAfter = (
   id: string | null,
-  cellType: TCell
+  cellType: TCell,
 ): InsertCellAfterAction => {
   return {
     type: ActionType.INSERT_CELL_AFTER,
@@ -58,7 +58,7 @@ export const insertCellAfter = (
 
 export const createBundleCode = (
   cellId: string,
-  inputCode: string
+  inputCode: string,
 ): ((dispatch: Dispatch<Action>) => Promise<void>) => {
   return async (dispatch: Dispatch<Action>): Promise<void> => {
     dispatch({
