@@ -3,6 +3,8 @@ import { Command } from "commander";
 import { serve } from "local-api";
 import { isLocalAPIError } from "../utils";
 
+const isProduction: boolean = process.env.NODE_ENV === "production";
+
 export const serveCommand = new Command()
   .command("serve [filename]")
   .description("Open a file for editing.")
@@ -11,23 +13,26 @@ export const serveCommand = new Command()
     async (filename: string = "notebook.js", options: { port: string }) => {
       try {
         const directory = path.join(process.cwd(), path.dirname(filename));
-        await serve(parseInt(options.port), path.basename(filename), directory);
+        await serve(
+          parseInt(options.port),
+          path.basename(filename),
+          directory,
+          !isProduction,
+        );
         console.log(
-          `Opened ${filename}. Navigate to http://localhost:${options.port} to edit the file.`
+          `Opened ${filename}. Navigate to http://localhost:${options.port} to edit the file.`,
         );
       } catch (error: unknown) {
         if (isLocalAPIError(error)) {
           if (error.code === "EADDRINUSE") {
             console.error(
-              "The specified port is in use! Try running on a different port. Please use the -p or --port argument. For more information use the --help command."
+              "The specified port is in use! Try running on a different port. Please use the -p or --port argument. For more information use the --help command.",
             );
-          } else if (error instanceof Error) {
-            console.log("Here is the problem: ", error.message);
           } else {
-            console.log("Server did not respond!", error);
+            console.log("Here is the problem: ", error.message);
           }
         }
         process.exit(1);
       }
-    }
+    },
   );
