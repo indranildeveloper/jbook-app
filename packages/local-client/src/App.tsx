@@ -6,7 +6,12 @@ import { initializeBundle } from "./bundler";
 
 const App: FC = () => {
   useEffect(() => {
-    initializeBundle();
+    initializeBundle().catch((error) =>
+      console.error(
+        "APP Component: An Error occurred while initializing esbuild: ",
+        error,
+      ),
+    );
   }, []);
 
   return (

@@ -27,8 +27,7 @@ export const serveCommand = new Command()
             console.log("Server did not respond!", error);
           }
         }
+        process.exit(1);
       }
-
-      process.exit(1);
     }
   );

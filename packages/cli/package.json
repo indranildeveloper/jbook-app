@@ -1,5 +1,7 @@
 {
   "name": "cli",
+  "private": true,
+  "version": "2.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -11,7 +13,8 @@
   },
   "devDependencies": {
     "@types/node": "^22.13.14",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "yarn-upgrade-all": "^0.7.5"
   },
   "packageManager": "yarn@4.7.0"
 }

@@ -1,5 +1,7 @@
 {
   "name": "local-api",
+  "private": true,
+  "version": "2.0.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -7,13 +9,15 @@
   },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "http-proxy-middleware": "^3.0.3"
+    "express": "^5.1.0",
+    "http-proxy-middleware": "^3.0.3",
+    "local-client": "workspace:^"
   },
   "devDependencies": {
-    "@types/cors": "^2",
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.1",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "yarn-upgrade-all": "^0.7.5"
   },
   "packageManager": "yarn@4.7.0"
 }

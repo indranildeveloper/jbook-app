@@ -5,12 +5,12 @@ export const initializeBundle = async () => {
   await esbuild.initialize({
     worker: true,
     // TODO: Make this a environment variable
-    wasmURL: "https://unpkg.com/esbuild-wasm@0.25.1/esbuild.wasm",
+    wasmURL: "https://unpkg.com/esbuild-wasm@0.25.2/esbuild.wasm",
   });
 };
 
 const bundleCode = async (
-  rawCode: string
+  rawCode: string,
 ): Promise<{ code: string; error: string }> => {
   try {
     const result = await esbuild.build({
