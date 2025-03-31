@@ -45,7 +45,7 @@ const cellsReducer = produce(
 
         state.data[cell.id] = cell;
         const foundIndex = state.order.findIndex(
-          (id) => id === action.payload.id
+          (id) => id === action.payload.id,
         );
 
         if (foundIndex < 0) {
@@ -56,11 +56,32 @@ const cellsReducer = produce(
 
         return state;
       }
+      case ActionType.FETCH_CELLS: {
+        state.loading = true;
+        state.error = null;
+        return state;
+      }
+      case ActionType.FETCH_CELLS_COMPLETE:
+        state.order = action.payload.map((cell) => cell.id);
+        state.data = action.payload.reduce(
+          (acc, cell) => {
+            acc[cell.id] = cell;
+            return acc;
+          },
+          {} as CellsState["data"],
+        );
+
+        return state;
+      case ActionType.FETCH_CELLS_ERROR: {
+        state.loading = false;
+        state.error = action.payload;
+        return state;
+      }
       default:
         return state;
     }
   },
-  initialCellState
+  initialCellState,
 );
 
 export default cellsReducer;

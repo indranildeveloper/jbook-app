@@ -2,16 +2,16 @@ import { Dispatch } from "redux";
 import {
   Action,
   ActionType,
+  DeleteCellAction,
+  ICell,
+  InsertCellAfterAction,
+  MoveCellAction,
   TCell,
   TCellMoveDirection,
-} from "../../interfaces";
-import {
   UpdateCellAction,
-  DeleteCellAction,
-  MoveCellAction,
-  InsertCellAfterAction,
 } from "../../interfaces";
 import bundleCode from "../../bundler";
+import axios from "axios";
 
 export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {
@@ -77,5 +77,26 @@ export const createBundleCode = (
         bundle: result,
       },
     });
+  };
+};
+
+export const fetchCells = () => {
+  return async (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.FETCH_CELLS });
+
+    try {
+      const { data } = await axios.get<ICell[]>("/cells");
+      dispatch({
+        type: ActionType.FETCH_CELLS_COMPLETE,
+        payload: data,
+      });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        dispatch({
+          type: ActionType.FETCH_CELLS_ERROR,
+          payload: error.message,
+        });
+      }
+    }
   };
 };
