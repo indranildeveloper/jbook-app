@@ -25,7 +25,7 @@ export const createCellsRouter = (fileName: string, dirname: string) => {
         "code" in error &&
         error.code === "ENOENT"
       ) {
-        // Add code to create a file and add default cells        // Add code to create a file and add default cells
+        // Add code to create a file and add default cells
         await fs.writeFile(fullPath, "[]", "utf-8");
         res.send([]);
       } else {

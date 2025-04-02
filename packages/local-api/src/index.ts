@@ -11,6 +11,8 @@ export const serve = (
 ) => {
   const app: Application = express();
 
+  app.use(createCellsRouter(filename, dir));
+
   if (useProxy) {
     app.use(
       createProxyMiddleware<Request, Response>({
@@ -23,8 +25,6 @@ export const serve = (
     const packagePath: string = require.resolve("local-client/dist/index.html");
     app.use(express.static(path.dirname(packagePath)));
   }
-
-  app.use(createCellsRouter(filename, dir));
 
   return new Promise<void>((resolve, reject) => {
     app.listen(port, () => resolve()).on("error", reject);

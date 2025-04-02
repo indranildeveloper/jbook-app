@@ -1,4 +1,5 @@
 import { Dispatch } from "redux";
+import axios from "axios";
 import {
   Action,
   ActionType,
@@ -11,7 +12,7 @@ import {
   UpdateCellAction,
 } from "../../interfaces";
 import bundleCode from "../../bundler";
-import axios from "axios";
+import { RootState } from "../reducers/reducers";
 
 export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {
@@ -94,6 +95,26 @@ export const fetchCells = () => {
       if (error instanceof Error) {
         dispatch({
           type: ActionType.FETCH_CELLS_ERROR,
+          payload: error.message,
+        });
+      }
+    }
+  };
+};
+
+export const saveCells = () => {
+  return async (dispatch: Dispatch<Action>, getState: () => RootState) => {
+    const {
+      cells: { data, order },
+    } = getState();
+
+    const cells = order.map((id) => data[id]);
+    try {
+      await axios.post("/cells", { cells });
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        dispatch({
+          type: ActionType.SAVE_CELLS_ERROR,
           payload: error.message,
         });
       }
